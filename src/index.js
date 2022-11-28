@@ -9,6 +9,7 @@ import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader';
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
+import MoviesContextProvider from "./contexts/moviesContext";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -22,9 +23,10 @@ const queryClient = new QueryClient({
 
 const App = () => {
     return (
-        <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />      {/* New Header  */}
+        <MoviesContextProvider>
         <Routes>
           <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
           <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
@@ -32,11 +34,12 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={ <Navigate to="/" /> } />
         </Routes>
+        </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
     );
   };
   
-  const rootElement = createRoot( document.getElementById("root") )
-  rootElement.render(<App /> );
+  const rootElement = createRoot(document.getElementById("root"));
+  rootElement.render(<App />);
