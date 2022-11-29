@@ -44,6 +44,9 @@ const SiteHeader = ({ history }) => {
         <Toolbar>
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
+          </Typography>          
+          <Typography variant="h5" sx={{ flexGrow: 1 }}>
+            Made by 20083540
           </Typography>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             All you ever wanted to know about Movies!
