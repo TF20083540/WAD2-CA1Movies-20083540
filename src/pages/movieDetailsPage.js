@@ -5,7 +5,8 @@ import PageTemplate from "../components/templateMoviePage";
 //import useMovie from "../hooks/useMovie";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from "react-query";
-import Spinner from '../components/spinner'
+import Spinner from '../components/spinner';
+
 
 const MoviePage = (props) => {
     const { id } = useParams();
@@ -23,10 +24,14 @@ const MoviePage = (props) => {
       return <h1>{error.message}</h1>;
     }
   
+    //Solving Exercise 3
+
+
     return (
     <>
       {movie ? (
         <>
+        
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
           </PageTemplate>
