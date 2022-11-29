@@ -23,7 +23,8 @@ const chip = { margin: 0.5 };
 
 const MovieDetails = ({ movie }) => {  // Don't miss this!
     const [drawerOpen, setDrawerOpen] = useState(false);
-  
+    {console.log("Production Company Count: "+movie.production_countries.map.length)}
+
     return (
       <>
       <Typography variant="h5" component="h3">
@@ -66,6 +67,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         <li>
           <Chip label="Production Countries" sx={chip} color="primary" />
         </li>
+
         {movie.production_countries.map((c) => (
           <li key={c.name}>
             <Chip label={c.name} sx={chip} />
