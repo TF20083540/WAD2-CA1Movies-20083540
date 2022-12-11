@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
-import MovieList from "../movieList";
+import Header from "../headerAlbumList";
+import FilterCard from "../filterAlbumsCard";
+import AlbumList from "../albumList";
 import Grid from "@mui/material/Grid";
 
-function MovieListPageTemplate({ movies, title, action }) {
-  console.log(movies);
+function AlbumListPageTemplate({ albums, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
-  let displayedMovies = movies
+  let displayedAlbums = albums
     .filter((m) => {
-      return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
-    })
-    .filter((m) => {
-      return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+      return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     });
+    //.filter((m) => {
+    //  return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+    //});
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
@@ -36,9 +35,9 @@ function MovieListPageTemplate({ movies, title, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <MovieList action={action} movies={displayedMovies}></MovieList>
+        <AlbumList action={action} albums={displayedAlbums}></AlbumList>
     </Grid>
     </Grid>
   );
 }
-export default MovieListPageTemplate;
+export default AlbumListPageTemplate;
